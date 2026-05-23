@@ -9,10 +9,11 @@ export default function Navbar() {
   const isAdmin = !!(session?.user as any)?.isAdmin;
 
   return (
-    <header className="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-ink/10">
-      <div className="max-w-6xl mx-auto px-4 h-14 flex items-center gap-6">
-        <Link href="/" className="font-bold text-lg tracking-tight">
-          <span className="text-brand">Blue Volt</span> Scientific
+    <header className="sticky top-0 z-40 bg-white border-b border-ink/10">
+      <div className="max-w-6xl mx-auto px-4 h-16 flex items-center gap-6">
+        <Link href="/" className="flex items-center">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/bluevolt-logo.png" alt="Blue Volt Scientific" className="h-10 w-auto" />
         </Link>
         <nav className="hidden md:flex items-center gap-5 text-sm text-ink/80">
           <Link href="/products" className="hover:text-brand">Products</Link>
