@@ -7,7 +7,7 @@ import { useCart } from "./CartContext";
 export default function ServiceCard({ service }: { service: Service }) {
   const { addService } = useCart();
   return (
-    <div className="card p-4 flex flex-col">
+    <div className="p-6 flex flex-col h-full hover:bg-ink/[0.02] transition">
       <Link href={`/services/${service.slug}`} className="block">
         <div className="font-medium">{service.name}</div>
         <p className="text-sm text-ink/70 mt-1 line-clamp-3">{service.description}</p>

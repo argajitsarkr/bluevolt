@@ -16,14 +16,17 @@ export default async function ServicesPage({ searchParams }: { searchParams: { c
   const services = await api<Service[]>(`/api/v1/services?${params.toString()}`).catch(() => []);
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-10">
-      <h1 className="text-3xl font-bold">Services</h1>
-      <p className="text-ink/70 mt-1">Instrument repair, calibration, AMC, custom servicing.</p>
+    <div className="max-w-7xl mx-auto px-6 py-16">
+      <div className="eyebrow mb-3">Catalog / Services</div>
+      <h1 className="display text-5xl md:text-7xl">Servicing</h1>
+      <p className="mt-5 text-ink/70 text-lg max-w-2xl">
+        Repair, AMC, calibration, custom. Pick one and add it to your cart - we call to scope.
+      </p>
 
-      <div className="mt-6 flex flex-wrap gap-2">
+      <div className="mt-12 flex flex-wrap gap-px bg-ink/15 border border-ink/15">
         <Link
           href="/services"
-          className={`chip border ${!searchParams.category ? "bg-brand text-white border-brand" : "border-ink/15 hover:bg-ink/5"} px-3 py-1`}
+          className={`px-4 py-2 mono text-[11px] uppercase tracking-[0.14em] ${!searchParams.category ? "bg-ink text-white" : "bg-white hover:bg-ink/5"}`}
         >
           All
         </Link>
@@ -31,7 +34,7 @@ export default async function ServicesPage({ searchParams }: { searchParams: { c
           <Link
             key={c.id}
             href={`/services?category=${c.slug}`}
-            className={`chip border ${searchParams.category === c.slug ? "bg-brand text-white border-brand" : "border-ink/15 hover:bg-ink/5"} px-3 py-1`}
+            className={`px-4 py-2 mono text-[11px] uppercase tracking-[0.14em] ${searchParams.category === c.slug ? "bg-ink text-white" : "bg-white hover:bg-ink/5"}`}
           >
             {c.name}
           </Link>
@@ -39,13 +42,17 @@ export default async function ServicesPage({ searchParams }: { searchParams: { c
       </div>
 
       {services.length === 0 ? (
-        <div className="mt-10 card p-10 text-center text-ink/60">
-          No services listed yet. Add from the admin panel.
+        <div className="mt-16 border border-ink/15 p-16 text-center">
+          <div className="eyebrow mb-3">Empty</div>
+          <div className="text-xl">No services listed yet.</div>
+          <p className="mt-2 text-ink/60">Add from the admin panel.</p>
         </div>
       ) : (
-        <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-ink/15 border border-ink/15">
           {services.map((s) => (
-            <ServiceCard key={s.id} service={s} />
+            <div key={s.id} className="bg-white">
+              <ServiceCard service={s} />
+            </div>
           ))}
         </div>
       )}

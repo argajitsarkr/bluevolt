@@ -8,7 +8,7 @@ export default function ProductCard({ product }: { product: Product }) {
   const { addProduct } = useCart();
   const off = discountPct(product.mrp_paise, product.our_price_paise);
   return (
-    <div className="card p-4 flex flex-col">
+    <div className="p-5 flex flex-col h-full hover:bg-ink/[0.02] transition">
       <Link href={`/products/${product.slug}`} className="block">
         <div className="aspect-square bg-ink/5 rounded-lg overflow-hidden mb-3 flex items-center justify-center">
           {product.image_url ? (

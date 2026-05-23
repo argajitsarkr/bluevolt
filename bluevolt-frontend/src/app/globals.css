@@ -8,26 +8,97 @@
 }
 
 html, body { height: 100%; }
+html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 body {
   color: var(--ink);
   background: #fff;
-  font-family: Inter, system-ui, -apple-system, sans-serif;
-  -webkit-font-smoothing: antialiased;
+  font-family: var(--font-body), Inter, system-ui, -apple-system, sans-serif;
+  font-feature-settings: "ss01", "cv11";
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-body), Inter, system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--ink);
 }
 
 a { color: inherit; }
 
+/* Type scale */
+.display { font-weight: 700; letter-spacing: -0.035em; line-height: 0.95; }
+.eyebrow {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(10,10,10,0.55);
+}
+.eyebrow-light {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+}
+.mono { font-family: var(--font-mono), ui-monospace, monospace; }
+
+/* Buttons */
 .btn {
-  @apply inline-flex items-center justify-center px-5 py-2.5 rounded-lg font-medium transition;
+  @apply inline-flex items-center justify-center px-5 py-3 rounded-none font-medium transition text-sm;
+  letter-spacing: -0.01em;
 }
-.btn-primary { @apply btn bg-brand text-white hover:bg-brand-600; }
-.btn-outline { @apply btn border border-ink/15 hover:bg-ink/5; }
-.btn-danger  { @apply btn bg-red-600 text-white hover:bg-red-700; }
+.btn-primary { @apply btn bg-ink text-white hover:bg-brand; }
+.btn-brand { @apply btn bg-brand text-white hover:bg-brand-700; }
+.btn-outline { @apply btn border border-ink/20 hover:border-ink hover:bg-ink hover:text-white; }
+.btn-ghost-light { @apply btn border border-white/30 text-white hover:bg-white hover:text-ink; }
+.btn-danger { @apply btn bg-red-600 text-white hover:bg-red-700; }
 
+/* Inputs */
 .input {
-  @apply w-full px-3 py-2 border border-ink/15 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand;
+  @apply w-full px-3 py-2.5 border border-ink/20 rounded-none bg-white focus:outline-none focus:border-ink;
+  font-family: var(--font-body), Inter, sans-serif;
 }
-.label { @apply block text-sm font-medium text-ink/80 mb-1; }
+.label {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(10,10,10,0.7);
+  display: block;
+  margin-bottom: 6px;
+}
 
-.card { @apply bg-white border border-ink/10 rounded-xl; }
-.chip { @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-medium; }
+/* Cards */
+.card { @apply bg-white border border-ink/10 rounded-none; }
+.card-hover { @apply transition hover:border-ink hover:shadow-[0_8px_24px_-12px_rgba(10,10,10,0.25)]; }
+
+/* Chips */
+.chip {
+  @apply inline-flex items-center px-2.5 py-1 rounded-none text-xs;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Section dividers */
+.rule { @apply border-t border-ink/15; }
+.rule-light { border-top: 1px solid rgba(255,255,255,0.15); }
+
+/* Numbered tile (NUUK editorial style) */
+.tile-num {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: var(--brand);
+}
+
+/* Tables */
+.table-mono th {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(10,10,10,0.6);
+  font-weight: 500;
+}
