@@ -35,7 +35,7 @@ services:
     build: ./bluevolt-frontend
     env_file: ./bluevolt-frontend/.env.local
     ports:
-      - "3000:3000"
+      - "3001:3000"
     depends_on:
       - api
     restart: unless-stopped
