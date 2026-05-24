@@ -1,6 +1,6 @@
 import NextAuth, { type DefaultSession } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
-import { API_URL } from "@/lib/api";
+import { SERVER_API_URL } from "@/lib/api";
 
 declare module "next-auth" {
   interface Session {
@@ -25,7 +25,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       authorize: async (creds) => {
         if (!creds?.email || !creds?.password) return null;
         try {
-          const res = await fetch(`${API_URL}/api/v1/auth/login`, {
+          const res = await fetch(`${SERVER_API_URL}/api/v1/auth/login`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email: creds.email, password: creds.password }),
