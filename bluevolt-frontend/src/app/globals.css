@@ -2,7 +2,48 @@
 @tailwind components;
 @tailwind utilities;
 
+/* --- Local fonts (copied from grantsetu) --- */
+@font-face {
+  font-family: "InterDisplay";
+  src: url("/fonts/InterDisplay-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/Inter-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/Inter-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "RobotoMono";
+  src: url("/fonts/RobotoMono-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Roobert";
+  src: url("/fonts/roobert-proportional-vf.woff2") format("woff2-variations");
+  font-weight: 300 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
+  --font-display: "InterDisplay", "Inter", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "RobotoMono", ui-monospace, "SFMono-Regular", monospace;
+  --font-roobert: "Roobert", "Inter", system-ui, sans-serif;
   --brand: #0F4FCB;
   --ink: #0A0A0A;
 }
@@ -12,13 +53,13 @@ html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
 body {
   color: var(--ink);
   background: #fff;
-  font-family: var(--font-body), Inter, system-ui, -apple-system, sans-serif;
+  font-family: var(--font-body);
   font-feature-settings: "ss01", "cv11";
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-body), Inter, system-ui, sans-serif;
-  font-weight: 600;
+  font-family: var(--font-display);
+  font-weight: 500;
   letter-spacing: -0.02em;
   color: var(--ink);
 }
@@ -26,22 +67,36 @@ h1, h2, h3, h4, h5, h6 {
 a { color: inherit; }
 
 /* Type scale */
-.display { font-weight: 700; letter-spacing: -0.035em; line-height: 0.95; }
+.display {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 0.95;
+}
 .eyebrow {
-  font-family: var(--font-mono), ui-monospace, monospace;
+  font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: rgba(10,10,10,0.55);
 }
 .eyebrow-light {
-  font-family: var(--font-mono), ui-monospace, monospace;
+  font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: rgba(255,255,255,0.6);
 }
-.mono { font-family: var(--font-mono), ui-monospace, monospace; }
+.mono { font-family: var(--font-mono); }
+
+/* Roobert scope (long-form copy on catalog + blog-style pages) */
+.roobert-scope, .roobert-scope p, .roobert-scope li, .roobert-scope a {
+  font-family: var(--font-roobert);
+}
+.roobert-scope h1, .roobert-scope h2, .roobert-scope h3, .roobert-scope h4 {
+  font-family: var(--font-roobert);
+  font-weight: 700;
+}
 
 /* Buttons */
 .btn {
@@ -57,10 +112,10 @@ a { color: inherit; }
 /* Inputs */
 .input {
   @apply w-full px-3 py-2.5 border border-ink/20 rounded-none bg-white focus:outline-none focus:border-ink;
-  font-family: var(--font-body), Inter, sans-serif;
+  font-family: var(--font-body);
 }
 .label {
-  font-family: var(--font-mono), ui-monospace, monospace;
+  font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -76,7 +131,7 @@ a { color: inherit; }
 /* Chips */
 .chip {
   @apply inline-flex items-center px-2.5 py-1 rounded-none text-xs;
-  font-family: var(--font-mono), ui-monospace, monospace;
+  font-family: var(--font-mono);
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -87,7 +142,7 @@ a { color: inherit; }
 
 /* Numbered tile (NUUK editorial style) */
 .tile-num {
-  font-family: var(--font-mono), ui-monospace, monospace;
+  font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 0.18em;
   color: var(--brand);
@@ -95,7 +150,7 @@ a { color: inherit; }
 
 /* Tables */
 .table-mono th {
-  font-family: var(--font-mono), ui-monospace, monospace;
+  font-family: var(--font-mono);
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.1em;
