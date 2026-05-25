@@ -60,6 +60,10 @@ class ProductIn(BaseModel):
     our_price_paise: int = 0
     in_stock: bool = True
     image_url: str = ""
+    spec_sheet_url: str = ""
+    safety_sheet_url: str = ""
+    usage_url: str = ""
+    coa_url: str = ""
 
 
 class ProductOut(BaseModel):
@@ -76,6 +80,10 @@ class ProductOut(BaseModel):
     our_price_paise: int
     in_stock: bool
     image_url: str
+    spec_sheet_url: str = ""
+    safety_sheet_url: str = ""
+    usage_url: str = ""
+    coa_url: str = ""
     created_at: datetime
 
 

@@ -18,4 +18,8 @@ class Product(Base):
     our_price_paise: Mapped[int] = mapped_column(Integer, default=0)
     in_stock: Mapped[bool] = mapped_column(Boolean, default=True, nullable=False)
     image_url: Mapped[str] = mapped_column(String(500), default="")
+    spec_sheet_url: Mapped[str] = mapped_column(String(500), default="")
+    safety_sheet_url: Mapped[str] = mapped_column(String(500), default="")
+    usage_url: Mapped[str] = mapped_column(String(500), default="")
+    coa_url: Mapped[str] = mapped_column(String(500), default="")
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())

@@ -20,6 +20,10 @@ export default function ProductForm({ initial }: { initial?: Product }) {
     our_price_rupees: initial ? initial.our_price_paise / 100 : 0,
     in_stock: initial?.in_stock ?? true,
     image_url: initial?.image_url || "",
+    spec_sheet_url: initial?.spec_sheet_url || "",
+    safety_sheet_url: initial?.safety_sheet_url || "",
+    usage_url: initial?.usage_url || "",
+    coa_url: initial?.coa_url || "",
   });
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState<string | null>(null);
@@ -45,6 +49,10 @@ export default function ProductForm({ initial }: { initial?: Product }) {
         our_price_paise: Math.round(form.our_price_rupees * 100),
         in_stock: form.in_stock,
         image_url: form.image_url,
+        spec_sheet_url: form.spec_sheet_url,
+        safety_sheet_url: form.safety_sheet_url,
+        usage_url: form.usage_url,
+        coa_url: form.coa_url,
       };
       if (initial) {
         await api(`/api/v1/admin/products/${initial.id}`, { method: "PUT", token, body: JSON.stringify(body) });
@@ -115,6 +123,28 @@ export default function ProductForm({ initial }: { initial?: Product }) {
         <input type="checkbox" checked={form.in_stock} onChange={(e) => setForm({ ...form, in_stock: e.target.checked })} />
         <span className="text-sm">In stock</span>
       </label>
+
+      <div className="pt-4 border-t border-ink/10">
+        <div className="eyebrow mb-3">Reference documents (optional)</div>
+        <div className="grid sm:grid-cols-2 gap-3">
+          <div>
+            <label className="label">Technical Data Sheet URL</label>
+            <input className="input" value={form.spec_sheet_url} onChange={(e) => setForm({ ...form, spec_sheet_url: e.target.value })} placeholder="https://..." />
+          </div>
+          <div>
+            <label className="label">Safety Data Sheet URL</label>
+            <input className="input" value={form.safety_sheet_url} onChange={(e) => setForm({ ...form, safety_sheet_url: e.target.value })} placeholder="https://..." />
+          </div>
+          <div>
+            <label className="label">Usage / EIFU URL</label>
+            <input className="input" value={form.usage_url} onChange={(e) => setForm({ ...form, usage_url: e.target.value })} placeholder="https://..." />
+          </div>
+          <div>
+            <label className="label">Certificate of Analysis URL</label>
+            <input className="input" value={form.coa_url} onChange={(e) => setForm({ ...form, coa_url: e.target.value })} placeholder="https://..." />
+          </div>
+        </div>
+      </div>
       {err && <div className="text-sm text-red-600">{err}</div>}
       <button className="btn-primary" disabled={busy}>{busy ? "Saving..." : initial ? "Update product" : "Create product"}</button>
     </form>

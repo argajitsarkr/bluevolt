@@ -22,6 +22,10 @@ export type Product = {
   our_price_paise: number;
   in_stock: boolean;
   image_url: string;
+  spec_sheet_url?: string;
+  safety_sheet_url?: string;
+  usage_url?: string;
+  coa_url?: string;
   created_at: string;
 };
 
