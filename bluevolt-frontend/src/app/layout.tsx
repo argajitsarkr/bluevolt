@@ -5,8 +5,12 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: { default: "Blue Volt Scientific - Chemicals, glassware, equipment, servicing", template: "%s | Blue Volt Scientific" },
-  description: "Discounted scientific catalog and repair/servicing - place an order, we call back to confirm.",
+  title: {
+    default: "Blue Volt Scientific - Small lab orders, Kolkata-sourced, NE-focused",
+    template: "%s | Blue Volt Scientific",
+  },
+  description:
+    "Lab chemicals, glassware, equipment + instrument servicing for scholars, MSc students, and small labs in Tripura and the North East. No minimum order, Kolkata sourcing, fast dispatch. Place a ₹1k-50k order, we call to confirm - no online payment.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

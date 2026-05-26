@@ -8,7 +8,7 @@ export default function Footer() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/bluevolt-logo.png" alt="Blue Volt Scientific" className="h-10 w-auto bg-white p-1.5" />
           <p className="mt-4 text-white/60 text-sm max-w-sm">
-            A scientific supply + servicing desk. We catalog the everyday, we call to confirm every order, and we never ask for payment online.
+            Small-order lab supply + instrument servicing for scholars, students, and labs in Tripura and the North East. Kolkata-sourced, no MOQ, we call to confirm every order.
           </p>
         </div>
         <div>
